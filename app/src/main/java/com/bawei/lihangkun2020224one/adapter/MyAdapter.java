@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bawei.lihangkun2020224one.R;
 import com.bawei.lihangkun2020224one.activity.MainActivity;
 import com.bawei.lihangkun2020224one.bean.BeanClass;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -59,7 +60,7 @@ public class MyAdapter extends BaseAdapter {
         String time = newsistBean.getTime();
         String author = newsistBean.getAuthor();
         String image = newsistBean.getImage();
-        Picasso.get().load(image).into(holder.tu);
+        Glide.with(context).load(image).into(holder.tu);
         holder.tx1.setText(title+"");
         holder.tx2.setText(content+"");
         holder.tx3.setText(author+"");
