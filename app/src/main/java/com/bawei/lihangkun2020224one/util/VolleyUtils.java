@@ -8,6 +8,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bawei.lihangkun2020224one.R;
 import com.bawei.lihangkun2020224one.base.App;
 
 import java.io.UnsupportedEncodingException;
@@ -73,15 +74,14 @@ public class VolleyUtils {
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 String a;
                 try {
-                    a=new String(response.data,"UTF-8");
-                } catch (UnsupportedEncodingException e) {
+                    a= new String(response.data, "UTF-8");
+                } catch (Exception e) {
                     e.printStackTrace();
+                    a=new String(response.data);
                 }
-
-                return super.parseNetworkResponse(response);
+                return Response.success(a,HttpHeaderParser.parseCacheHeaders(response));
             }
         };
-
         mQueue.add(stringRequest);
     }
 
